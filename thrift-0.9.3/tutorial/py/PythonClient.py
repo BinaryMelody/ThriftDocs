@@ -20,7 +20,7 @@
 #
 
 import sys, glob
-sys.path.append('gen-py')
+sys.path.append('../gen-py')
 sys.path.insert(0, glob.glob('../../lib/py/build/lib.*')[0])
 
 from tutorial import Calculator
@@ -79,7 +79,7 @@ try:
 
   arr = []
 
-  for i in range(1000000):
+  for i in range(10):
     past = datetime.now()
     client.add(100, 100)
     now = datetime.now()
@@ -88,6 +88,14 @@ try:
     print micro
     arr.append(micro)
 
+
+  print sys.getsizeof(client.getdiffsize(1))
+  print sys.getsizeof(client.getdiffsize(4))
+  print sys.getsizeof(client.getdiffsize(10))
+  print sys.getsizeof(client.getdiffsize(30))
+  print sys.getsizeof(client.getdiffsize(50))
+  print sys.getsizeof(client.getdiffsize(70))
+  print sys.getsizeof(client.getdiffsize(100))
   # Close!
   transport.close()
 

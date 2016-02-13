@@ -20,7 +20,7 @@
 #
 
 import sys, glob
-sys.path.append('gen-py')
+sys.path.append('../gen-py')
 sys.path.insert(0, glob.glob('../../lib/py/build/lib.*')[0])
 
 from tutorial import Calculator
@@ -32,6 +32,37 @@ from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
+
+str1KB = ""
+str4KB = ""
+str10KB = ""
+str30KB = ""
+str50KB = ""
+str70KB = ""
+str100KB = ""
+
+for i in range(1024):
+  str1KB += 'a'
+
+
+for i in range(4):
+  str4KB += str1KB
+
+for i in range(10):
+  str10KB += str1KB
+
+for i in range(30):
+  str30KB += str1KB
+
+for i in range(50):
+  str50KB += str1KB
+
+
+for i in range(70):
+  str70KB += str1KB
+
+for i in range(100):
+  str100KB += str1KB
 
 class CalculatorHandler:
   def __init__(self):
@@ -76,6 +107,24 @@ class CalculatorHandler:
   def getStruct(self, key):
     print 'getStruct(%d)' % (key)
     return self.log[key]
+
+  def getdiffsize(self, sz):
+    if sz == 1:
+      return str1KB
+    elif sz == 4:
+      return str4KB
+    elif sz == 10:
+      return str10KB
+    elif sz ==30:
+      return str30KB
+    elif sz == 50:
+      return str50KB
+    elif sz == 70:
+      return str70KB
+    elif sz == 100:
+      return str100KB
+    else:
+      return ''
 
   def zip(self):
     print 'zip()'

@@ -27,6 +27,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('  void ping()')
   print('  i32 add(i32 num1, i32 num2)')
   print('  i32 calculate(i32 logid, Work w)')
+  print('  string getdiffsize(i32 sz)')
   print('  void zip()')
   print('  SharedStruct getStruct(i32 key)')
   print('')
@@ -102,6 +103,12 @@ elif cmd == 'calculate':
     print('calculate requires 2 args')
     sys.exit(1)
   pp.pprint(client.calculate(eval(args[0]),eval(args[1]),))
+
+elif cmd == 'getdiffsize':
+  if len(args) != 1:
+    print('getdiffsize requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.getdiffsize(eval(args[0]),))
 
 elif cmd == 'zip':
   if len(args) != 0:
